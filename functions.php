@@ -338,4 +338,54 @@ endif;
     Especially on high-traffic websites, this can significantly improve performance.
 */
 
+/*
+    Start: This function hides prices and "Add to Cart" buttons for users who are not logged in.
+    It removes the "Add to Cart" button and the product price from both the product pages and the shop page for non-logged-in users.
+    Instead, a message with a login link is displayed, encouraging users to log in to see the prices and add products to the cart.
+*/
+
+if ( !function_exists( 'evolution_hide_price_add_cart_not_logged_in' ) ) :
+ /**
+  * Show prices only for registered and logged-in users
+  */
+function evolution_hide_price_add_cart_not_logged_in() { 
+    
+    // Check if the user is not logged in
+    if ( !is_user_logged_in() ) {
+
+        // Remove the "Add to Cart" button and price from product and shop pages
+        remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+        remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
+        remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
+        remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );  
+        
+        // Add a message with login link
+        add_action( 'woocommerce_single_product_summary', 'evolution_print_login_to_see', 31 );
+        add_action( 'woocommerce_after_shop_loop_item', 'evolution_print_login_to_see', 11 );
+    }
+}
+
+// Add function to init hook
+add_action('init', 'evolution_hide_price_add_cart_not_logged_in');
+
+/**
+ * Displays a login link with a message
+ */
+function evolution_print_login_to_see() {
+    echo '<p>' . 
+        __('Please log in to see the prices.', 'theme_name') . 
+        ' <a href="' . esc_url( get_permalink(wc_get_page_id('myaccount')) ) . '">' . 
+        __('Log in here', 'theme_name') . 
+        '</a></p>';
+}
+endif;
+
+/*
+    End: This function helps to hide product prices and the "Add to Cart" button for non-logged-in users. 
+    It ensures that only logged-in users can view the prices and add products to their cart. If a user is not logged in, 
+    a message with a link to the login page is shown. This can improve user experience by prompting users to log in 
+    to access the store's features.
+*/
+
+
 ?>
