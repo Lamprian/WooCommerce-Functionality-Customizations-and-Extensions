@@ -284,3 +284,58 @@ function auto_complete_virtual_orders( $payment_complete_status, $order_id, $ord
     when the conditions are met. This allows the order to be marked as "Completed" without manual intervention, 
     as long as the products are virtual and do not require shipping or physical delivery.
 */
+
+/*
+    Start: This function optimizes the loading of WooCommerce scripts and styles.
+    It removes the WooCommerce styles and scripts from pages that are not related to WooCommerce 
+    (such as product, cart, checkout, or account pages), thus improving the performance of the website.
+*/
+
+if ( !function_exists( 'evolution_manage_woocommerce_styles' ) ) :
+
+    /**
+     * Optimizes WooCommerce scripts
+     * Removes WooCommerce styles and scripts from pages not related to WooCommerce
+     */
+    function evolution_manage_woocommerce_styles() {
+
+        // First, check if WooCommerce is installed to avoid errors
+        if ( function_exists( 'is_woocommerce' ) ) {
+
+            // Removes the styles and scripts if the page is not a WooCommerce page (not product, cart, checkout, or account)
+            if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() && ! is_account_page() ) {          
+                wp_dequeue_style( 'woocommerce-layout' );        // Removes WooCommerce layout style
+                wp_dequeue_style( 'woocommerce-smallscreen' );   // Removes small screen styles
+                wp_dequeue_style( 'woocommerce-general' );       // Removes general WooCommerce styles
+                wp_dequeue_style( 'evolution-woostyles' );       // Removes custom WooCommerce styles
+                wp_dequeue_script( 'wc_price_slider' );          // Removes price slider script
+                wp_dequeue_script( 'wc-single-product' );        // Removes single product page scripts
+                wp_dequeue_script( 'wc-add-to-cart' );           // Removes add to cart scripts
+                wp_dequeue_script( 'wc-cart-fragments' );        // Removes cart fragments scripts
+                wp_dequeue_script( 'wc-checkout' );              // Removes checkout scripts
+                wp_dequeue_script( 'wc-add-to-cart-variation' ); // Removes variation add to cart scripts
+                wp_dequeue_script( 'wc-cart' );                  // Removes cart scripts
+                wp_dequeue_script( 'wc-chosen' );                // Removes chosen.js library
+                wp_dequeue_script( 'woocommerce' );              // Removes general WooCommerce script
+                wp_dequeue_script( 'prettyPhoto' );              // Removes prettyPhoto gallery script
+                wp_dequeue_script( 'prettyPhoto-init' );         // Removes prettyPhoto initialization script
+                wp_dequeue_script( 'jquery-blockui' );           // Removes jQuery blockUI script
+                wp_dequeue_script( 'jquery-placeholder' );       // Removes jQuery placeholder script
+                wp_dequeue_script( 'fancybox' );                 // Removes fancybox script
+                wp_dequeue_script( 'jqueryui' );                 // Removes jQuery UI script
+            }
+        }
+    }
+
+    // Add the function to the 'wp_enqueue_scripts' hook with a high priority (99) to ensure it runs later
+    add_action( 'wp_enqueue_scripts', 'evolution_manage_woocommerce_styles', 99 );
+
+endif;
+
+/*
+    End: This optimization prevents the loading of WooCommerce scripts and styles on pages 
+    that do not need them, improving the page load speed on those pages.
+    Especially on high-traffic websites, this can significantly improve performance.
+*/
+
+?>
