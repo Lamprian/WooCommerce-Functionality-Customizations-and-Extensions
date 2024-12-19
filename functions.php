@@ -387,5 +387,4 @@ endif;
     to access the store's features.
 */
 
-
 ?>
