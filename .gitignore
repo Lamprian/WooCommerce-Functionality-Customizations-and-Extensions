@@ -6,7 +6,7 @@
 # Note: if you want to stage/commit WP core files
 # you can delete this whole section/until Configuration.
 # Ignore everything except functions.php
-*
+
 !functions.php
 
 # OS-specific files
