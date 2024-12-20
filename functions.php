@@ -21,7 +21,6 @@
  * Author: Anastasios Lamprianidis
  * Site: https://alamprianidis.gr/
  *
- * Version: 1.0
  * License: GPL-3.0+
  *
  * Copyright (C) 2024
