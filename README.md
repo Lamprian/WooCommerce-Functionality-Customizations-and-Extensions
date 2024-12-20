@@ -5,7 +5,7 @@ This project includes a customized functions.php file specifically tailored for 
 
 Functions
 
-1) george_reorder_my_account_menu:
+1) custom_reorder_account_menu:
 Reorders the tabs on the "My Account" page of WooCommerce.
 
 2) evolution_add_payment_method_to_admin_new_order:
