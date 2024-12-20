@@ -5,7 +5,7 @@
     It defines a new order for the tabs displayed to users when they visit their account page.
 */
 
-function george_reorder_my_account_menu( $menu_items ) {
+function custom_reorder_account_menu( $menu_items ) {
     
     // Define new order for the menu items
     $newtaborder = array(
@@ -24,11 +24,12 @@ function george_reorder_my_account_menu( $menu_items ) {
 }
 
 // Apply the function through the 'woocommerce_account_menu_items' filter
-add_filter( 'woocommerce_account_menu_items', 'george_reorder_my_account_menu' );
+add_filter( 'woocommerce_account_menu_items', 'custom_reorder_account_menu' );
 
 /*
     End: The function returns the newly ordered menu items, improving user experience on the account page.
 */
+
 
 /*
     Start: This function adds the payment method used by the customer to the order email sent to the store administrators.
