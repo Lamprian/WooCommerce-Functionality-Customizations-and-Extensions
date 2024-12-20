@@ -1,5 +1,35 @@
 <?php
 
+/**
+ * WooCommerce Functionality Customizations and Extensions
+ *
+ * Description:
+ * This file is a dynamic script designed to customize and extend the 
+ * functionality of WooCommerce. Its purpose is to continuously improve 
+ * and adapt features based on project requirements.
+ *
+ * Key Features:
+ * - The file will be frequently updated with new features and improvements.
+ * - Designed to provide flexibility and scalability for WooCommerce installations.
+ * - Includes well-documented code for easy maintenance and understanding.
+ *
+ * Usage:
+ * - Place this file in your WordPress theme's directory (`wp-content/themes/your-theme/functions.php`).
+ * - Ensure WooCommerce is installed and activated on your WordPress site.
+ * - Customize the code as per your requirements.
+ *
+ * Author: Anastasios Lamprianidis
+ * Site: https://alamprianidis.gr/
+ *
+ * Version: 1.0
+ * License: GPL-3.0+
+ *
+ * Copyright (C) 2024
+ *
+ * This program is distributed under the GNU General Public License, version 3 (GPL-3.0+).
+ * See the full license at https://www.gnu.org/licenses/gpl-3.0.html
+ */
+
 /*
     Start: This function is used to reorder the menu items on the "My Account" page of WooCommerce.
     It defines a new order for the tabs displayed to users when they visit their account page.
