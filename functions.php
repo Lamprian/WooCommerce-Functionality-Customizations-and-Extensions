@@ -2,7 +2,7 @@
 
 /**
  * WooCommerce Functionality Customizations and Extensions
- *
+ * 
  * Description:
  * This file is a dynamic script designed to customize and extend the 
  * functionality of WooCommerce. Its purpose is to continuously improve 
